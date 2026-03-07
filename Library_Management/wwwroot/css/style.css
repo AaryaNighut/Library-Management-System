@@ -1,0 +1,148 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.center-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.book-slider-container {
+    width: 100%; /* Full width container */
+    overflow: hidden; /* Hide overflow */
+    margin: 20px 0; /* Adjust margin as needed */
+}
+
+.book-slider {
+    display: flex; /* Flexbox for horizontal alignment */
+    animation: slide 10s linear infinite; /* Animation */
+}
+
+    .book-slider img {
+        width: 200px; /* Adjust size of images */
+        height: auto; /* Maintain aspect ratio */
+        margin-right: 10px; /* Spacing between images */
+    }
+
+/* Keyframe animation to slide the images from left to right */
+@keyframes slide {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+
+.content-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 50px;
+}
+
+.recommended-books-section {
+    width: 20%;
+}
+
+.recommended-books {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.book-item {
+    margin-bottom: 10px;
+}
+
+#login-container {
+    width: 300px;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin: 0 auto; /* Center horizontally */
+}
+
+    #login-container form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #login-container input, #login-container select, #login-container button {
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+    }
+
+    #login-container input, #login-container select {
+        background-color: #555;
+        color: white;
+    }
+
+    #login-container button {
+        background-color: #007BFF;
+        color: white;
+        cursor: pointer;
+    }
+
+        #login-container button:hover {
+            background-color: #0056b3;
+        }
+
+.highlight-title {
+    color: yellow;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.star-box {
+    border: 2px solid yellow;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Center the login form vertically and horizontally */
+.content-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh; /* Adjust the height to position the form correctly */
+}
+
+.title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px; /* Adjust as needed */
+}
+
+.title {
+    background-color: lightgreen; /* Light green background */
+    padding: 10px 20px; /* Padding for spacing */
+    border-radius: 30px; /* Makes the oval shape */
+    font-weight: bold;
+    color: black; /* Text color */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow for effect */
+}

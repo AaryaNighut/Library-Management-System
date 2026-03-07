@@ -1,0 +1,114 @@
+﻿@model dropdownstudent
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!-- Modal -->
+<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Boorow book</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Book title</label>
+                    <input id="txt_bookid" class="form-control d-none" readonly />
+                    <input id="txt_booktitle" class="form-control" readonly />
+                </div>
+                <div class="form-group">
+                    <label>Select an student</label>
+                    <select asp-for="SelectedItemId" asp-items="Model.Items" class="form-control"></select>
+                    <span id="valstudentlist" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="BoorowBook1()">Boorow Book</button>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="content mt-3">
+    <!-- general form elements -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card pb-5">
+                    <div class="card-header">
+                        <h3 class="card-title">All Books</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body ">
+                        <table class="table  table-responsive" id="tbl_books">
+                        </table>
+                    </div>
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            pagination(null, "Books", "Books_Load", "tbl_books", "1", "100");
+        });
+        function BoorowBook(id,title) {
+            $('#txt_bookid').val(id);
+            $('#txt_booktitle').val(title);
+            $('#SelectedItemId').val('');
+            $('#valstudentlist').text('');
+        }
+        function BoorowBook1() {
+            $('#valstudentlist').text('');
+            if ($('#SelectedItemId').val() == '') {
+                $('#valstudentlist').text('select dropdwon first');
+            }
+            var fd = new FormData();
+            fd.append("ERP_no", $('#SelectedItemId').val());
+            fd.append("ISBN", $('#txt_bookid').val());
+            $.ajax({
+                type: "POST",
+                url: "/Books/BoorowBook/",
+                data: fd,
+                contentType: false, // Important: No content type, so it's sent as FormData
+                processData: false, // Prevents jQuery from processing FormData
+                success: function (response) {
+                    if (response == "Book borrow sucessfuly") {
+                        Swal.fire({
+                            title: "Success!",
+                            text: response, // Message from response
+                            icon: "success"
+                        }).then(function () {
+                            window.location.reload();
+                        });
+                    } else {
+                        Swal.fire({
+                            title: "Oops...",
+                            text: response, // Message from response
+                            icon: "error"
+                        }).then(function () {
+                            window.location.reload();
+                        });
+                    }
+                    
+                },
+                error: function (xhr, status, error) {
+                    Swal.fire({
+                        title: "Error!",
+                        text: "There was an error processing the request.",
+                        icon: "error"
+                    });
+                }
+            });
+
+        }
+    </script>
+}
+

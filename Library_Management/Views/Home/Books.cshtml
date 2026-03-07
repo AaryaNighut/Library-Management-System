@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewData["Title"] = "Books";
+}
+
+    <table class="table table-bordered table-striped dataTable dtr-inline" id="example2" border="1" cellpadding="10">
+    <thead>
+        <a href="c:\library management\library_management\library_management\views\home\books.cshtml">c:\library management\library_management\library_management\views\home\books.cshtml</a>
+            <tr>
+                <th>Books Name</th>
+                <th>Author</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Loop through 10 rows -->
+            <!-- You can replace the content in the cells with your desired data -->
+            <tr>
+                <td>Engineering Mathematics 1</td>
+                <td>  K. V kumbhojkar</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>Engineering Mathematics 1</td>
+                <td>k.v. Nimi</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>Engineering Physics 1
+                </td>
+                    Avadhanulu&Kshirsagar
+                </td>
+                <td> 3</td>
+            </tr>
+            <tr>
+                <td>Engineering Physics 1 </td>
+                <td>
+                    S. Chand
+                    td>
+                <td> 3</td>
+            </tr>
+            <tr>
+                <td>Engineering Chemistry 1</td>
+                <td>Row 5, Col 2</td>
+                <td>Row 5, Col 3</td>
+            </tr>
+            <tr>
+                <td>Row 6, Col 1</td>
+                <td>Row 6, Col 2</td>
+                <td>Row 6, Col 3</td>
+            </tr>
+            <tr>
+                <td>Row 7, Col 1</td>
+                <td>Row 7, Col 2</td>
+                <td>Row 7, Col 3</td>
+            </tr>
+            <tr>
+                <td>Row 8, Col 1</td>
+                <td>Row 8, Col 2</td>
+                <td>Row 8, Col 3</td>
+            </tr>
+            <tr>
+                <td>Row 9, Col 1</td>
+                <td>Row 9, Col 2</td>
+                <td>Row 9, Col 3</td>
+            </tr>
+            <tr>
+                <td>Row 10, Col 1</td>
+                <td>Row 10, Col 2</td>
+                <td>Row 10, Col 3</td>
+            </tr>
+        </tbody>
+    </table>
+
+@section Scripts {
+    <script>
+        $(function () {
+          $("#example1").DataTable({
+            "responsive": true, "lengthChange": false, "autoWidth": false,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+          }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+          $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+          });
+        });
+    </script>
+}

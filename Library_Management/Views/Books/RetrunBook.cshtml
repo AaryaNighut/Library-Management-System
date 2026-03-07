@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewData["Title"] = "ReturnBook";
+}
+<section class="content mt-3">
+    <!-- general form elements -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card pb-5">
+                    <div class="card-header">
+                        <h3 class="card-title">Return book</h3>
+                        <div style="text-align: end;">
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table class="table table-responsive" id="tbl_register">
+                        </table>
+                    </div>
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /.card -->
+@section Scripts{
+<script>
+    $(document).ready(function () {
+            var getURL = new URL(window.location.href);
+            var Id = getURL.searchParams.get("id");
+            pagination(Id, "Books", "RetrunBookLoad", "tbl_register", "1", "100");
+    });
+    function Delete(id,isbn) {
+            var fd = new FormData();
+            fd.append("id", id);
+            fd.append("ISBN", isbn);
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Return Book it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: "POST",
+                        url: "/Books/RetrunBook/",
+                        data: fd,
+                        contentType: false, // Important: No content type, so it's sent as FormData
+                        processData: false, // Prevents jQuery from processing FormData
+                    success: function (response) {
+                            if (response == "Return Book sucessfuly") {
+                                Swal.fire({
+                                    title: "Success!",
+                                    text: response, // Message from response
+                                    icon: "success"
+                                }).then(function () {
+                                    window.location = '/Books/Index';
+                                });
+                            } else {
+                                Swal.fire({
+                                    title: "Oops...",
+                                    text: response, // Message from response
+                                    icon: "error"
+                                }).then(function () {
+                                    window.location.reload();
+                                });
+                            }
+
+                    }
+                });
+
+            }
+        });
+
+    }
+</script>
+}

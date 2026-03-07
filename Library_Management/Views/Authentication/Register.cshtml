@@ -1,0 +1,68 @@
+﻿@{
+    ViewData["Title"] = "Regiser";
+}
+
+<section class="content mt-3">
+    <!-- general form elements -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card pb-5">
+                    <div class="card-header">
+                        <h3 class="card-title">User view</h3>
+                        <div style="text-align: end;">
+                            <a asp-action="AddRegister" asp-controller="Authentication">Add User</a>
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table class="table table-responsive" id="tbl_register">
+                        </table>
+                    </div>
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /.card -->
+<script src="~/plugins/jquery/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        pagination(null, "Authentication", "Register_Load", "tbl_register", "1", "100");
+    });
+    function Delete(id) {
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, deactivated it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: "POST",
+                    url: "/Authentication/Delete/",
+                    data: { "id": id},
+                    dataType: 'JSON',
+                    async: false,
+                    success: function (response) {
+                        Swal.fire({
+                            title: "Deactivated!",
+                            text: "User has been successful deactivated.",
+                            icon: "success"
+                        }).then(function () {
+                            window.location.reload();
+                        });
+                        
+                    }
+                });
+               
+            }
+        });
+       
+    }
+</script>

@@ -1,0 +1,114 @@
+﻿@model Library_Management.Models.Register
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<section class="content mt-3">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Edit User</h3>
+                    </div>
+                    <form asp-action="Edit">
+                        <div class="card-body">
+                            <div class="row">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group">
+                                    <input asp-for="Id" class="form-control d-none" />
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label asp-for="Firstname" class="control-label"></label>
+                                    <input asp-for="Firstname" class="form-control" />
+                                    <span asp-validation-for="Firstname" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label asp-for="Lastname" class="control-label"></label>
+                                    <input asp-for="Lastname" class="form-control" />
+                                    <span asp-validation-for="Lastname" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label asp-for="Username" class="control-label"></label>
+                                    <input asp-for="Username" class="form-control" />
+                                    <span asp-validation-for="Username" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label asp-for="Email" class="control-label"></label>
+                                    <input asp-for="Email" type="text" class="form-control" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label asp-for="Mobile" class="control-label"></label>
+                                    <input asp-for="Mobile" class="form-control" />
+                                    <span asp-validation-for="Mobile" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label class="control-label">ERP No</label>
+                                    <input asp-for="ERP_no" class="form-control" maxlength="9" />
+                                    <span asp-validation-for="ERP_no" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label asp-for="Role_id" class="control-label"></label>
+                                    <select asp-for="Role_id" class="form-control">
+                                        <option value="1">Super Admin</option>
+                                        <option value="2">Admin</option>
+                                        <option value="3">Librarian</option>
+                                        <option value="4">Student</option>
+                                    </select>
+                                    <span asp-validation-for="Role_id" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label asp-for="Password" class="control-label"></label>
+                                    <div class="input-group">
+                                        <input asp-for="Password" type="text" class="form-control" />
+                                        <div class="input-group-append">
+                                            <div class="input-group-text">
+                                                <span class="fas fa-lock-open" id="togglePassword"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input type="checkbox" asp-for="isActived" />
+                                <label>Is Active</label>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input type="submit" value="Edit User" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- jQuery -->
+<script src="~/plugins/jquery/jquery.min.js"></script>
+
+@if (ViewBag.Register == "Success")
+{
+    <script>
+        showNotification('success', 'User edit', 'User edit successfully', '', true, '\Authentication\Register');
+    </script>
+}
+<script>
+    $('#togglePassword').click(function () {
+        const passwordInput = $('#Password');
+        const type = passwordInput.attr('type') === 'password' ? 'text' : 'password';
+
+        passwordInput.attr('type', type);
+        $(this).toggleClass('fa-lock'); // Toggle eye icons
+    });
+    $('#togglePassword1').click(function () {
+        const passwordInput = $('#ConfirmPassword');
+        const type = passwordInput.attr('type') === 'password' ? 'text' : 'password';
+        passwordInput.attr('type', type);
+        $(this).toggleClass('fa-lock-open'); // Toggle eye icons
+    });
+
+</script>
