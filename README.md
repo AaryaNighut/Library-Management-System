@@ -99,7 +99,7 @@ Library_Management
 ## ⚙️ Installation & Setup
 
 Clone the repository:
-git clone https://github.com/mohiteekanksh/Library_Management.git
+git clone https://github.com/AaryaNighut/Library_Management.git
 
 Navigate to the project folder:
 cd Library_Management
@@ -147,17 +147,17 @@ dotnet run
 
 ## 👨‍💻 Author
 
-Ekanksh  
+Aarya
 Computer Science Engineering (AI & ML)
 
 GitHub:  
-https://github.com/mohiteekanksh
+https://github.com/AaryaNighut
 
 ---
 
 ## 📜 License
 
-Copyright © 2026 Ekanksh
+Copyright © 2026 Aarya
 
 This project is created for educational and portfolio purposes.  
 All Rights Reserved.
