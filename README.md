@@ -117,7 +117,7 @@ dotnet run
 
 
 
-## 📊 Future Improvements
+## 🔮 Future Improvements
 
 - Role-based access control (Admin / Student)
 - Online book reservation system
@@ -126,6 +126,19 @@ dotnet run
 - Reports and analytics dashboard
 
 ---
+**📸 Screenshots**
+🔐 Login Page
+<img width="1920" height="1080" alt="page1" src="https://github.com/user-attachments/assets/74b17b7c-3a96-447c-b4c5-08d3998a814b" />
+
+📊 Dashboard
+<img width="1920" height="1080" alt="page2" src="https://github.com/user-attachments/assets/13b16735-a42b-41d5-9c4e-aa49115c8399" />
+
+👤 User View / Profile
+<img width="1920" height="1080" alt="page3" src="https://github.com/user-attachments/assets/8f041d2e-c430-43e5-80f3-e190b676b522" />
+
+📚All Books
+<img width="1920" height="1080" alt="page4" src="https://github.com/user-attachments/assets/833bf805-c945-4c8d-b0c0-cbd1687aa44c" />
+
 
 ## 👨‍💻 Author
 
